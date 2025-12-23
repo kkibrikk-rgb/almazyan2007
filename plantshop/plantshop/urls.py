@@ -1,0 +1,15 @@
+from django.contrib import admin
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from main import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.home, name='home'),
+    path('plant/<int:pk>/', views.plant_detail, name='plant_detail'),
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register_view, name='register'),
+    path('logout/', views.logout_view, name='logout'),
+    path('custom-admin/', views.custom_admin, name='custom_admin'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
